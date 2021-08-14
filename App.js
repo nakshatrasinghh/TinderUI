@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, {useState} from 'react';
 import { Text, View, StyleSheet, Pressable, useWindowDimensions } from 'react-native';
 import Card from './src/components/TinderCard';
 import users from './assets/data/users';
@@ -11,16 +11,20 @@ const ROTATION = 60;
 
 const App = () => {
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const currentProfile = users[currentIndex];
+
   const { width: screenWidth } = useWindowDimensions();
 
   const hiddentranslateX = 2 * screenWidth;
 
-  const translateX = useSharedValue(0); //-width 0 width
+  const translateX = useSharedValue(0);
   const rotate = useDerivedValue(() => interpolate(
     translateX.value,
     [ 0, hiddentranslateX ],
     [ 0, ROTATION ]
-  )+ 'deg'); //-60deg 0 60deg
+  )+ 'deg');
 
   const cardStyle = useAnimatedStyle(() => ({
     transform: [
@@ -49,10 +53,13 @@ const App = () => {
 
   return (
     <View style={styles.pageContainer}>
+      <View style={styles.nextCardContainer}>
+        <Card user={currentProfile} />
+      </View>
       <PanGestureHandler onGestureEvent={Gesturehandler}>
         <Animated.View style={[styles.animatedCard, cardStyle]}>
           {/* dynamic data rendering */}
-          <Card user={users[0]}/>
+          <Card user={currentProfile}/>
         </Animated.View>
       </PanGestureHandler>
     </View>
@@ -64,13 +71,22 @@ const styles = StyleSheet.create({
   pageContainer:{
     justifyContent: 'center', 
     alignItems: 'center', 
-    flex: 1
+    flex: 1,
+    // backgroundColor: 'red'
   },
   animatedCard: {
     width: '100%',
+    flex: 1, 
     justifyContent: 'center', 
     alignItems: 'center', 
+    // backgroundColor: 'red'
   },
+  nextCardContainer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    // position: 'absolute'
+  }
 });
 
 export default App;

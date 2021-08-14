@@ -10,8 +10,8 @@ const Card = (props) => {
         source={{uri: image}}
         style={styles.image}> 
                 <View style={styles.InnerCard}>
-                <Text style={styles.name}>{name}</Text>
-                <Text style={styles.bio}>{bio}</Text>  
+                  <Text style={styles.name}>{name}</Text>
+                  <Text style={styles.bio}>{bio}</Text>  
                 </View>
         </ImageBackground>
       </View>
