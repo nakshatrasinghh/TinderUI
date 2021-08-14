@@ -4,7 +4,7 @@ export default [
       name: 'Nakshatra Singh',
       image:
         'https://raw.githubusercontent.com/nakshatrasinghh/nakshatrasinghh/master/readme.jpg',
-      bio: 'I will be the semicolons to your code',
+      bio: 'Deep Learning Practitioner',
     },
     // more data can be added here or JSON can be stored in a URL and called using an API
   ];
