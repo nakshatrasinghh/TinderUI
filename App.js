@@ -19,11 +19,11 @@ const App = () => {
   }));
 
   const Gesturehandler = useAnimatedGestureHandler({
-    onStart: () => {
-      console.warn('onStart');
+    onStart: (_, context) => {
+      context.startX = translateX.value;
     },
-    onActive: (event) => {
-      translateX.value = event.translationX;
+    onActive: (event, context) => {
+      translateX.value = context.startX + event.translationX;
       // console.warn('onActive', event.translationX);
     },
     onEnd: (event) => {
