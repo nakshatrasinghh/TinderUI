@@ -13,7 +13,11 @@ const App = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [nextIndex, setNextIndex] = useState(currentIndex + 1);
+
   const currentProfile = users[currentIndex];
+
+  const nextProfile = users[nextIndex];
 
   const { width: screenWidth } = useWindowDimensions();
 
@@ -54,7 +58,7 @@ const App = () => {
   return (
     <View style={styles.pageContainer}>
       <View style={styles.nextCardContainer}>
-        <Card user={currentProfile} />
+        <Card user={nextProfile} />
       </View>
       <PanGestureHandler onGestureEvent={Gesturehandler}>
         <Animated.View style={[styles.animatedCard, cardStyle]}>

@@ -11,7 +11,7 @@ export default [
       id: '1',
       name: 'Nakshatra Singh',
       image:
-        'https://raw.githubusercontent.com/nakshatrasinghh/nakshatrasinghh/master/readme.jpg',
+        'https://nakshatraasinghh.vercel.app/images/pexels-marc-schulte-2779948.jpg',
       bio: 'Deep Learning Practitioner',
     },
     {
