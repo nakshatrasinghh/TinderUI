@@ -1,3 +1,5 @@
 # TinderUI using expo-CLI
 
-![](assets/readme/tinder.gif) 
+<p align="center">
+<img src="assets/readme/tinder.gif" width="295" height="600">
+</p>
