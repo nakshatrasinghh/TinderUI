@@ -1,20 +1,36 @@
-import React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { React, useState } from 'react';
+import { Text, View, StyleSheet, Pressable, useWindowDimensions } from 'react-native';
 import Card from './src/components/TinderCard';
 import users from './assets/data/users';
 import 'react-native-gesture-handler';
-import Animated, { useSharedValue, useAnimatedStyle, withSpring, useAnimatedGestureHandler} from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring, useAnimatedGestureHandler, useDerivedValue, interpolate} from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler'
+
+const ROTATION = 60;
 
 
 const App = () => {
 
-  const translateX = useSharedValue(0);
+  const { width: screenWidth } = useWindowDimensions();
+
+  const hiddentranslateX = 2 * screenWidth;
+
+  const translateX = useSharedValue(0); //-width 0 width
+  const rotate = useDerivedValue(() => interpolate(
+    translateX.value,
+    [ 0, hiddentranslateX ],
+    [ 0, ROTATION ]
+  )+ 'deg'); //-60deg 0 60deg
 
   const cardStyle = useAnimatedStyle(() => ({
-    transform: [{
-      translateX: translateX.value,
-    }],
+    transform: [
+      {
+       translateX: translateX.value,
+      },
+      {
+       rotate: rotate.value,
+      },
+  ],
     // opacity: sharedValue.value, 
   }));
 
@@ -27,7 +43,7 @@ const App = () => {
       // console.warn('onActive', event.translationX);
     },
     onEnd: (event) => {
-      console.warn('onEnd');
+      // console.warn('onEnd');
     }
   });
 
