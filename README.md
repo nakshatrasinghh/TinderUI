@@ -5,5 +5,5 @@
 </p>
 
 
-This Tinder UI/UX is build using expo-cli rather than react-native-cli. The concept of interpolation was used for animations. On android devices, zIndex + position:'absolute' breaks with dynamic components. The issue can be found [here](https://github.com/facebook/react-native/issues/8968). Hence, Like/Nope containers do not render on an andriod device but on iOS. I do not own an iphone, hence, the card pop animation out isn't visible on iOS, but available on Android. 
+This Tinder UI/UX is build using expo-cli rather than react-native-cli. The concept of interpolation was used for animations. On android devices, zIndex + position:'absolute' breaks with dynamic components. The issue can be found [here](https://github.com/facebook/react-native/issues/8968). Hence, Like/Nope containers do not render on an andriod device but on iOS. I do not own an iphone, hence, the card pop animation out isn't visible on iOS, but available on Android. For learning more about animations, you can refer to the official documentation [here](https://reactnative.dev/docs/animations).
 
