@@ -20,9 +20,10 @@ const Card = (props) => {
 
 const styles = StyleSheet.create({
     card: {
-      width: '95%',
-      height: '70%',
+      width: '100%',
+      height: '100%',
       borderRadius: 20,
+      backgroundColor: '#fefefe',
       // vv https://ethercreative.github.io/react-native-shadow-generator/ vv
       shadowColor: "#000",
       shadowOffset: {
