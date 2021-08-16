@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { View, StyleSheet, useWindowDimensions } from 'react-native';
 // import Card from './src/components/TinderCard';
 // import users from './assets/data/users';
-import 'react-native-gesture-handler';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, useAnimatedGestureHandler, useDerivedValue, interpolate, runOnJS } from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 
@@ -10,12 +9,12 @@ import Like from '../../../assets/images/LIKE.png';
 import Nope from '../../../assets/images/nope.png';
 
 const ROTATION = 60;
-const SWIPE_VELOCITY = 10;
+const SWIPE_VELOCITY = 600;
 
 
 const AnimatedStack = (props) => {
 
-  const { data, renderItem } = props;
+  const { data, renderItem, onSwipeLeft, onSwipeRight  } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -79,6 +78,7 @@ const AnimatedStack = (props) => {
     ),
   }));
 
+  //useAnimatedGestureHandler -> UI thread
   const Gesturehandler = useAnimatedGestureHandler({
     onStart: (_, context) => {
       context.startX = translateX.value;
@@ -106,6 +106,10 @@ const AnimatedStack = (props) => {
       {},
       //index cannot be changed on the UI thread, so it is shifted to the JS thread
       () => runOnJS(setCurrentIndex)(currentIndex + 1));
+
+      const onSwipe = event.velocityX > 0 ? onSwipeRight : onSwipeLeft;
+      //a javascript function is called on the JS thread
+      onSwipe && runOnJS(onSwipe)(currentProfile);
     }, 
   });
 

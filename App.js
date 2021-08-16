@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, } from 'react-native';
-import Card from './src/components/TinderCard';
-import users from './assets/data/users';
+import { View, StyleSheet } from 'react-native';
 import 'react-native-gesture-handler';
-import AnimatedStack from './src/components/AnimatedStack';
+import HomeScreen from './src/screens/HomeScreen';
+import MatchesScreen from './src/screens/MatchesScreen';
 
 const App = () => {
+
   return (
     <View style={styles.pageContainer}> 
-      <AnimatedStack data={users} renderItem={({ item }) => <Card user={item}/>}/>
+      <MatchesScreen />
     </View>
   );
 };
