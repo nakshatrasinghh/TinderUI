@@ -9,7 +9,7 @@ import Like from '../../../assets/images/LIKE.png';
 import Nope from '../../../assets/images/nope.png';
 
 const ROTATION = 60;
-const SWIPE_VELOCITY = 600;
+const SWIPE_VELOCITY = 10;
 
 
 const AnimatedStack = (props) => {
@@ -93,7 +93,7 @@ const AnimatedStack = (props) => {
         translateX.value = withSpring(0);
         return;
       }
-      //swipe > 800 -> throw card
+      //swipe > 800 -> throw card, if else loop using withSpring and events
       //Math.sign can also be used
       // if (event.velocityX < 0) {
       //   translateX.value = withSpring(-hiddentranslateX);
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     zIndex:1,
-    //https://github.com/facebook/react-native/issues/8968
+    // https://github.com/facebook/react-native/issues/8968
     // elevation: 3, //for android 
   }
 });
