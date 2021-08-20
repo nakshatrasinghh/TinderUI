@@ -13,8 +13,9 @@ const App = () => {
 
   const [activeScreen, setActiveScreen] = useState('HOME');
 
+  // change the theme later
   const color = '#b5b5b5'
-
+ 
   const activeColor = '#F76C6B'
 
   return (
@@ -22,13 +23,13 @@ const App = () => {
       <View style={styles.pageContainer}>
         <View style={styles.topNavigation}>
           <Pressable onPress={() => setActiveScreen('HOME')}>
-            <Fontisto name="tinder" size={30} color={activeScreen == 'HOME' ? activeColor : color} />
+            <Fontisto name="tinder" size={32} color={activeScreen == 'HOME' ? activeColor : color} />
           </Pressable>
-          <MaterialCommunityIcons name="star-four-points" size={30} color={color} />
+          <MaterialCommunityIcons name="star-four-points" size={32} color={color} />
           <Pressable onPress={() => setActiveScreen('CHAT')}>
-            <Ionicons name="ios-chatbubbles" size={30} color={activeScreen == 'CHAT' ? activeColor : color} />
+            <Ionicons name="ios-chatbubbles" size={32} color={activeScreen == 'CHAT' ? activeColor : color} />
           </Pressable>
-          <FontAwesome name="user" size={30} color={color} /> 
+          <FontAwesome name="user" size={32} color={color} /> 
         </View>
         {activeScreen == 'HOME' && <HomeScreen />}
         {activeScreen == 'CHAT' && <MatchesScreen />}
